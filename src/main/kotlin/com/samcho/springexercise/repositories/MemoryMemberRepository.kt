@@ -1,8 +1,9 @@
 package com.samcho.springexercise.repositories
 
 import com.samcho.springexercise.domain.Member
-import kotlin.jvm.optionals.getOrNull
+import org.springframework.stereotype.Repository
 
+@Repository
 class MemoryMemberRepository : MemberRepository {
 
     companion object {

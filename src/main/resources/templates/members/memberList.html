@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<div class="container">
+  <div>
+    <table>
+      <thead>
+      <tr>
+        <th>#</th>
+        <th>Name</th>
+      </tr>
+      </thead>
+      <tbody>
+<!--      ${} evaluates the variable inside (e.g. from the model or local var) -->
+      <tr th:each="member : ${members}">
+        <td th:text="${member.id}"></td>
+        <td th:text="${member.name}"></td>
+      </tr>
+    </table>
+  </div>
+
+</div>
+</body>
+</html>
