@@ -14,13 +14,17 @@ class MemoryMemberRepository : MemberRepository {
     override fun save(member: Member): Member =
         member.apply {
             id = ++seq
-            store[id] = this
+            store[id!!] = this
         }
 
     override fun findById(id: Long): Member? = store[id]
 
-    override fun findByName(name: String): Member? =
-        store.values.stream().filter { it.name == name }.findAny().orElseGet(null)
+    override fun findByName(name: String): Member? {
+        val result = store.values.stream().filter { it.name == name }.findAny()
+        return if(result.isPresent) result.get() else null
+    }
 
     override fun findAll(): List<Member> = store.values.toList()
+
+    fun clearStore() = store.clear()
 }
