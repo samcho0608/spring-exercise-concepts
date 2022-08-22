@@ -3,7 +3,7 @@ package com.samcho.springexercise.repositories
 import com.samcho.springexercise.domain.Member
 import org.springframework.stereotype.Repository
 
-@Repository
+//@Repository
 class MemoryMemberRepository : MemberRepository {
 
     companion object {
