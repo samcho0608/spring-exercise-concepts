@@ -3,8 +3,10 @@ package com.samcho.springexercise.services
 import com.samcho.springexercise.domain.Member
 import com.samcho.springexercise.repositories.MemberRepository
 import org.springframework.stereotype.Service
+import javax.transaction.Transactional
 
 // when used as a Bean, automatically uses Autowired if not specified explicitly
+@Transactional
 @Service
 class MemberService(
     private var memberRepository: MemberRepository

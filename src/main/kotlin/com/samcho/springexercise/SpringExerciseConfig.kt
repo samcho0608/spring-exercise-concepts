@@ -1,18 +1,28 @@
 package com.samcho.springexercise
 
+import com.samcho.springexercise.repositories.JpaMemberRepository
 import com.samcho.springexercise.repositories.MemberRepository
 import com.samcho.springexercise.repositories.MemoryMemberRepository
 import com.samcho.springexercise.services.MemberService
+import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
+import javax.persistence.EntityManager
+import javax.sql.DataSource
 
 @Configuration
-class SpringExerciseConfig {
+class SpringExerciseConfig @Autowired constructor(
+    private val em : EntityManager
+){
+
+
 
     // Register Bean using configuration if its implementation needs to change in certain circumstances
 
     @Bean
-    fun memberRepository() : MemberRepository = MemoryMemberRepository()
+    fun memberRepository() : MemberRepository =
+        JpaMemberRepository(em)
+//        MemoryMemberRepository()
 
 //    @Bean
 //    fun memberService() : MemberService = MemberService(memberRepository())
